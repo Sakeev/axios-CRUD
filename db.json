@@ -1,3 +1,22 @@
 {
-  "products": []
+  "products": [
+    {
+      "title": "Nurbol",
+      "price": "bescenno",
+      "image": "https://www.thefactsite.com/wp-content/uploads/2021/05/the-hulk-facts.jpg",
+      "id": 1
+    },
+    {
+      "title": "asd",
+      "price": "dsa",
+      "image": "ds",
+      "id": 2
+    },
+    {
+      "title": "123",
+      "price": "123",
+      "image": "123",
+      "id": 3
+    }
+  ]
 }

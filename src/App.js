@@ -20,11 +20,23 @@ const App = () => {
     await axios.post(API, newProduct);
   }
 
+  //  ! read (get request)
+  async function getProducts() {
+    let result = await axios.get(API);
+    // console.log(result);
+    setProducts(result.data);
+  }
+
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<ProductList />} />
+        <Route
+          path="/"
+          element={
+            <ProductList getProducts={getProducts} products={products} />
+          }
+        />
         <Route path="/add" element={<AddForm addProduct={addProduct} />} />
         <Route path="/contacts" element={<h1>Contacts</h1>} />
         <Route path="/edit/:id" element={<EditForm />} />
