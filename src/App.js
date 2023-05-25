@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddForm from "./components/AddForm";
@@ -14,12 +15,17 @@ const App = () => {
   // ! для хранения полученных продуктов
   const [products, setProducts] = useState([]);
 
+  // ! create (post request)
+  async function addProduct(newProduct) {
+    await axios.post(API, newProduct);
+  }
+
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<ProductList />} />
-        <Route path="/add" element={<AddForm />} />
+        <Route path="/add" element={<AddForm addProduct={addProduct} />} />
         <Route path="/contacts" element={<h1>Contacts</h1>} />
         <Route path="/edit/:id" element={<EditForm />} />
         <Route path="/details/:id" element={<Details />} />
