@@ -14,6 +14,7 @@ const App = () => {
 
   // ! для хранения полученных продуктов
   const [products, setProducts] = useState([]);
+  const [oneProduct, setOneProduct] = useState(null);
 
   // ! create (post request)
   async function addProduct(newProduct) {
@@ -25,6 +26,12 @@ const App = () => {
     let result = await axios.get(API);
     // console.log(result);
     setProducts(result.data);
+  }
+
+  // ! get for details && get for edit
+  async function getOneProduct(id) {
+    let result = await axios.get(`${API}/${id}`);
+    setOneProduct(result.data);
   }
 
   return (
@@ -39,7 +46,12 @@ const App = () => {
         />
         <Route path="/add" element={<AddForm addProduct={addProduct} />} />
         <Route path="/contacts" element={<h1>Contacts</h1>} />
-        <Route path="/edit/:id" element={<EditForm />} />
+        <Route
+          path="/edit/:id"
+          element={
+            <EditForm getOneProduct={getOneProduct} oneProduct={oneProduct} />
+          }
+        />
         <Route path="/details/:id" element={<Details />} />
       </Routes>
     </BrowserRouter>
