@@ -1,21 +1,21 @@
 {
   "products": [
     {
-      "title": "Nurbol",
+      "title": "Nurbolghjgjkh",
       "price": "bescenno",
       "image": "https://www.thefactsite.com/wp-content/uploads/2021/05/the-hulk-facts.jpg",
       "id": 1
     },
     {
-      "title": "asd",
-      "price": "dsa",
-      "image": "ds",
+      "title": "Daniel",
+      "price": "3500$",
+      "image": "https://thumbs.dreamstime.com/b/wolf-17334773.jpg",
       "id": 2
     },
     {
-      "title": "123",
-      "price": "123",
-      "image": "123",
+      "title": "asd",
+      "price": "sad",
+      "image": "sadasd",
       "id": 3
     }
   ]

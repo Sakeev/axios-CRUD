@@ -6,10 +6,9 @@ import Details from "./components/Details";
 import EditForm from "./components/EditForm";
 import Header from "./components/Header";
 import ProductList from "./components/ProductList";
+import { API } from "./helpers/consts";
 
 const App = () => {
-  const API = "http://localhost:8000/products";
-
   // ! CRUD - create, read, update, delete
 
   // ! для хранения полученных продуктов
@@ -24,7 +23,6 @@ const App = () => {
   //  ! read (get request)
   async function getProducts() {
     let result = await axios.get(API);
-    // console.log(result);
     setProducts(result.data);
   }
 
@@ -34,6 +32,18 @@ const App = () => {
     setOneProduct(result.data);
   }
 
+  // ! update (patch request)
+  async function updateProduct(id, editedProduct) {
+    await axios.patch(`${API}/${id}`, editedProduct);
+    getProducts();
+  }
+
+  // ! delete (delete request)
+  async function deleteProduct(id) {
+    await axios.delete(`${API}/${id}`);
+    getProducts();
+  }
+
   return (
     <BrowserRouter>
       <Header />
@@ -41,7 +51,11 @@ const App = () => {
         <Route
           path="/"
           element={
-            <ProductList getProducts={getProducts} products={products} />
+            <ProductList
+              getProducts={getProducts}
+              products={products}
+              deleteProduct={deleteProduct}
+            />
           }
         />
         <Route path="/add" element={<AddForm addProduct={addProduct} />} />
@@ -49,7 +63,11 @@ const App = () => {
         <Route
           path="/edit/:id"
           element={
-            <EditForm getOneProduct={getOneProduct} oneProduct={oneProduct} />
+            <EditForm
+              getOneProduct={getOneProduct}
+              oneProduct={oneProduct}
+              updateProduct={updateProduct}
+            />
           }
         />
         <Route path="/details/:id" element={<Details />} />

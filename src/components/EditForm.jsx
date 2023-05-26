@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const EditForm = ({ getOneProduct, oneProduct }) => {
+const EditForm = ({ getOneProduct, oneProduct, updateProduct }) => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
@@ -21,15 +21,13 @@ const EditForm = ({ getOneProduct, oneProduct }) => {
     }
   }, [oneProduct]);
 
-  console.log(oneProduct);
-
   function handleValues() {
     let newProduct = {
       title,
       price,
       image,
     };
-    console.log(newProduct);
+    updateProduct(params.id, newProduct);
   }
 
   return (

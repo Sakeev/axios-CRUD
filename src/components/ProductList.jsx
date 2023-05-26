@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ProductList = ({ getProducts, products }) => {
+const ProductList = ({ getProducts, products, deleteProduct }) => {
   const [selectedProduct, setSelectedProduct] = useState("");
   const [hover, setHover] = useState("");
 
@@ -35,7 +35,9 @@ const ProductList = ({ getProducts, products }) => {
             <Link to={`/edit/${item.id}`}>
               <Button variant="primary">Edit</Button>
             </Link>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={() => deleteProduct(item.id)}>
+              Delete
+            </Button>
           </Card.Body>
         </Card>
       ))}
