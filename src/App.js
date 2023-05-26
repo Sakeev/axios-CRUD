@@ -70,7 +70,12 @@ const App = () => {
             />
           }
         />
-        <Route path="/details/:id" element={<Details />} />
+        <Route
+          path="/details/:id"
+          element={
+            <Details getOneProduct={getOneProduct} oneProduct={oneProduct} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
